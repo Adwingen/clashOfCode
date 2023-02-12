@@ -1,0 +1,33 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+int countChar(char *s, char c) 
+{
+    int count = 0;
+    int i;
+    for (i = 0; i < strlen(s); i++) 
+    {
+        if (s[i] == c) 
+           count++;
+    }
+    return count;
+}
+
+int main() 
+{
+    char s[1002];
+    int A, C, G, T;
+    if (scanf("%s", s) != 1) 
+    {
+        printf("Error: invalid input\n");
+        return 1;
+    }
+    A = countChar(s, 'A');
+    C = countChar(s, 'C');
+    G = countChar(s, 'G');
+    T = countChar(s, 'T');
+    printf("%d %d %d %d\n", A, C, G, T);
+    return 0;
+}

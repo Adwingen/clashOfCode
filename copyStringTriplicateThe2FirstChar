@@ -1,0 +1,49 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+void copy_string(char *output, const char *input) 
+{
+    int n = strlen(input);
+    int i;
+
+    if (n >= 2) 
+    {
+        for (i = 0; i < 6; i++) 
+        {
+            output[i] = input[i % 2];
+        }
+    } 
+    else 
+    {
+        for (i = 0; i < 3 * n; i++) 
+        {
+            output[i] = input[i % n];
+        }
+    }
+
+    output[3 * n] = '\0';
+}
+
+
+int main()
+{
+    char input[2000];
+    char output [2000];
+   
+    scanf("%[^\n]", input);
+   
+    // Write an answer using printf(). DON'T FORGET THE TRAILING \n
+    // To debug: fprintf(stderr, "Debug messages...\n");
+
+    copy_string(output, input);
+    printf("%s\n", output);
+
+    return 0;
+}

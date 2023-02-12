@@ -1,0 +1,37 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+
+void automate_search_bar(char input[]) 
+{
+    if (strstr(input, "http://") || strstr(input, "ftp://") || strstr(input, "https://"))
+    {
+        printf("%s\n", input);
+    } 
+    else if (strchr(input, '.')) 
+    {
+        printf("http://%s\n", input);
+    } 
+    else 
+    {
+        printf("ftp://%s\n", input);
+    }
+}
+
+int main()
+{
+    char urlbar[201];
+    int i;
+    int dot;
+    scanf("%[^\n]", urlbar);
+    
+    automate_search_bar(urlbar);
+ 
+}

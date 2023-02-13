@@ -1,0 +1,47 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+
+int absolute_difference(char s[]) 
+{
+    int vowels[] = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+    int num_vowels = 0;
+    int num_consonants = 0;
+    int length = strlen(s);
+    int i, j;
+    for (i = 0; i < strlen(s); i++) 
+    {
+        int is_vowel = 0;
+        for (j = 0; j < 10; j++) 
+        {
+            if (s[i] == vowels[j]) 
+            {
+                is_vowel = 1;
+                break;
+            }
+        }
+        if (is_vowel) 
+        {
+            num_vowels++;
+        } else if (s[i] >= 'A' && s[i] <= 'Z' || s[i] >= 'a' && s[i] <= 'z') 
+        {
+            num_consonants++;
+        }
+    }
+    return abs(num_vowels - num_consonants);
+}
+
+int main()
+{
+    char S[10001];
+    scanf("%[^\n]", S);
+    int result = absolute_difference(S);
+    printf("%d\n", result);
+    return 0;
+}

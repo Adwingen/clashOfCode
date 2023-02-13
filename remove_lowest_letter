@@ -1,0 +1,30 @@
+void remove_lowest_letter(char* s) 
+{
+    int len = strlen(s);
+    char lowest_letter = 'z';
+    for (int i = 0; i < len; i++) 
+    {
+        if (s[i] < lowest_letter && s[i] >= 'a') 
+        {
+            lowest_letter = s[i];
+        }
+    }
+    int j = 0;
+    for (int i = 0; i < len; i++) 
+    {
+        if (s[i] != lowest_letter) 
+        {
+            s[j++] = s[i];
+        }
+    }
+    s[j] = '\0';
+}
+
+int main() 
+{
+    char s[257];
+    scanf("%s", &s);
+    remove_lowest_letter(s);
+    printf("%s\n", s);
+    return 0;
+}

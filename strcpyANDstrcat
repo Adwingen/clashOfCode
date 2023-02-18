@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+    int i;
+    int len;
+    char first[257];
+	char second[257];
+	char final[257];
+
+
+	scanf("%[^\n]", first);
+    fgetc(stdin);
+    scanf("%[^\n]", second);
+
+	//The strcpy() function copies the string pointed by source(including the null character) to the destination.
+	//The strcpy() function also returns the copied string.
+	//char* strcpy(char* destination, const char* source);
+	strcpy(final, first);
+  
+	//In C programming, the strcat() function contcatenates(joins) two strings.
+	//char* strcat(char* destination, const char* source)
+	strcat(final, &second[strlen(first)]);
+
+	printf("%s", final);
+
+    return 0;
+}

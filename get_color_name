@@ -1,0 +1,128 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void get_color_name(char* code)
+{
+    // Convert hex code to RGB values
+    char r_str[3], g_str[3], b_str[3];
+
+    //char* strncpy(char* dest, const char* src, size_t n)
+    //dest − This is the pointer to the destination array where the content is to be copied.
+    //src − This is the string to be copied.
+    //n − The number of characters to be copied from source.
+
+    strncpy(r_str, &code[1], 2);
+    strncpy(g_str, &code[3], 2);
+    strncpy(b_str, &code[5], 2);
+
+    r_str[2] = g_str[2] = b_str[2] = '\0';
+
+    //long int strtol(const char* str, char** endptr, int base)
+    //str − This is the string containing the representation of an integral number.
+    //endptr − This is the reference to an object of type char*, whose value is set by the function to the next character in str after the numerical value.
+    //base − This is the base, which must be between 2 and 36 inclusive, or be the special value 0.
+
+    int r = strtol(r_str, NULL, 16);
+    int g = strtol(g_str, NULL, 16);
+    int b = strtol(b_str, NULL, 16);
+
+    // Check if the color is black
+    if (r < 10 && g < 10 && b < 10)
+    {
+        printf("black");
+        return;
+    }
+        
+
+    // Check if the color is white
+    if (r >= 245 && g >= 245 && b >= 245)
+    {
+        printf("white");
+        return;
+    }
+        
+
+    // Check if the color is a high-value color
+    if (r >= 10 && g < 10 && b < 10)
+    {
+        printf("red");
+        return;
+    }
+        
+
+    if (g >= 10 && r < 10 && b < 10)
+    {
+        printf("green");
+        return;
+    }
+       
+
+    if (b >= 10 && r < 10 && g < 10)
+    {
+        printf("blue");
+        return;
+    }
+        
+
+    // Check if the color is a secondary color
+    if (r >= 10 && g >= 10 && b < 10)
+    {
+        if (r > g)
+        {
+            printf("magenta");
+            return;
+        }
+           
+        else
+        {
+            printf("yellow");
+            return;
+        }
+            
+
+         if (r >= 10 && b >= 10 && g < 10)
+        {
+             if (r > b)
+             {
+                 printf("cyan");
+                 return;
+             }
+                
+             else
+             {
+                 printf("magenta");
+                 return;
+             }
+           
+        }
+        if (g >= 10 && b >= 10 && r < 10)
+        {
+            if (g > b)
+            {
+                printf("yellow");
+                return;
+            }
+            else
+            {
+                printf("cyan");
+                return;
+            }
+        
+        }
+        
+    }
+    // Otherwise, the color is grey
+    printf("grey");
+}
+
+    int main()
+{
+    char code[8];
+    scanf("%s", &code);
+    get_color_name(code);
+ 
+    return 0;
+}

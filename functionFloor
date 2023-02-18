@@ -1,0 +1,13 @@
+int main()
+{
+	int n, e, fide;
+	scanf("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &e);
+		fide = (int)floor(e * 7.5 + 700); // round down to nearest integer
+		printf("%d\n", fide);
+	}
+
+	return 0;
+}

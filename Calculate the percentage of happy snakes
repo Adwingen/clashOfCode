@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int n;
+    char snake[26];
+    scanf("%d", &n);
+    fgetc(stdin);
+
+    int happy_snakes = 0;
+
+    for (int i = 0; i < n; i++) 
+    {
+  
+        scanf("%[^\n]", snake);
+        fgetc(stdin);
+
+        int length = strlen(snake);
+
+        // Check if the snake is facing right
+        if (snake[length - 2] == '-' && snake[length - 1] == '<') 
+        {
+            printf("%s", snake);
+            printf(" - Happy snake!\n");
+            happy_snakes++;
+        }
+
+        // Check if the snake is facing left
+        if (snake[0] == '>' && snake[1] == '-') 
+        {
+            printf("%s", snake);
+            printf(" - Happy snake!\n");
+            happy_snakes++;
+        }
+    }
+
+    // Calculate the percentage of happy snakes
+    float percentage = (float)happy_snakes / (float)n * 100;
+
+    printf("Percentage of happy snakes: %.0f%%\n", percentage);
+
+    return 0;
+}
